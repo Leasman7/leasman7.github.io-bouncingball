@@ -1,0 +1,58 @@
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:blueviolet"></div>
+
+<script>
+
+var velocityX = 5;
+var velocityY = 3;
+var positionX = 0;
+var positionY = 0;
+var ball = document.getElementById('ball');
+
+function moveBall(){
+  ball.style.left = positionX + 'px';
+  ball.style.top = positionY + 'px'; 
+
+  if(positionX > 500){
+    velocityX = -5;
+    ball.style.background = getRandomColor();
+  }
+
+  if(positionX < 25){
+    velocityX = 5;
+    ball.style.background = getRandomColor();
+  }
+
+  if(positionY > 500){
+    velocityY = -3;
+    ball.style.background = getRandomColor();
+  }
+  
+  if(positionY < 25){
+    velocityY = 3;
+    ball.style.background = getRandomColor();
+  }
+
+  positionX = positionX + velocityX;
+  positionY = positionY + velocityY;
+
+}
+setInterval(moveBall, 10);
+
+function getRandomColor(){
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (var i = 0; i < 6; i++){
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+</script>
